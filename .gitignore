@@ -7,3 +7,6 @@
 # Composer
 /vendor/
 composer.lock
+
+# Test
+index.php
