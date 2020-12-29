@@ -1,0 +1,21 @@
+{
+  "name": "tim-autumnwind/invitation-code",
+  "description": "Generate invitation code",
+  "type": "1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "秋风悲画扇",
+      "email": "wxstones@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TimAutumnWind\\": "src/"
+    }
+  }
+}
