@@ -1,3 +1,4 @@
+> [简体中文](README.zh-CN.md) | [English](README.md)
 ### background
 > Now more and more businesses involve social e-commerce
 > Or invite to share
@@ -10,7 +11,7 @@
 ##### In my mind, it's like this:<br/>
 1. When the user registers, query the database input to see if the mobile phone exists (routine operation, no less)<br/>
 2. After the mobile phone number is verified, the user login information is stored in the `login table`<br/>
-3. Then use the newly added data table of `login table` to generate the invitation automatically by adding ID码<br/>
+3. Then use the newly added data table of `login table` to generate the invitation automatically by adding ID<br/>
 
 ###### In this way, there will be no duplicate invitation code<br/>
 ###### At the same time, we will not use the invitation code as a query in the future `where`<br/>
