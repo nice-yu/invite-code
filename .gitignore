@@ -10,3 +10,4 @@ composer.lock
 
 # Test
 index.php
+test.php
