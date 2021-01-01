@@ -7,12 +7,11 @@ class InvitaionCode
 {
 
     /**
-     * 32个进制字符（0,1,O,I 没加入, Y,Z 用于补位）
-     * 去除 0 O 1 I
-     * 预留 Y 和 Z
+     * 32 hexadecimal characters
+     * Not in ( 0 O 1 I)
+     * reserve (Y AND Z)
      * @var string[]
      * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
     private static $dictionaries = array(
         '2', '3', '4', '5', '6', '7', '8', '9',
@@ -22,7 +21,7 @@ class InvitaionCode
 
 
     /**
-     * Y Z 为补位字符，不和上述字符重复
+     * (Y AND Z) The above characters cannot be repeated
      * @var string
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
@@ -31,7 +30,7 @@ class InvitaionCode
 
 
     /**
-     * 字典大小
+     * Dictionary size
      * @var int
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
@@ -40,7 +39,7 @@ class InvitaionCode
 
 
     /**
-     * 邀请码最小长度
+     * Minimum length of invitation code
      * @var int
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
@@ -49,7 +48,7 @@ class InvitaionCode
 
 
     /**
-     * 初始化可自定义生成方式
+     * Initialize customizable generation mode
      * InvitaionCode constructor.
      * @param int $max
      * @param array $dictionaries
@@ -71,8 +70,8 @@ class InvitaionCode
     }
 
     /**
-     * 编码一个邀请码
-     * @param int $id 数字Id
+     * Code an invitation code
+     * @param int $id Id
      * @return string
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
@@ -81,22 +80,18 @@ class InvitaionCode
     {
         $inviteCode = "";
         $length = self::$length;
-        /** 拿到被除次数 */
         while (floor($id / $length) > 0) {
-            /** 映射被除次数 */
             $index = floatval($id) % $length;
             $inviteCode .= self::$dictionaries[$index];
-            /** 直到除尽 */
             $id = floor($id / $length);
         }
-        /** 取模获取数字 */
         $index = $id % $length;
         $inviteCode .= self::$dictionaries[$index];
         return $this->mixedInvite($inviteCode);
     }
 
     /**
-     * 混合邀请码
+     * Mixed invitation code
      * @param string $inviteCode
      * @return string
      * @version("1.0")
@@ -104,17 +99,17 @@ class InvitaionCode
      */
     private function mixedInvite(string $inviteCode): string
     {
-        /** 邀请码长度 */
+        /** Invitation code length */
         $code_len = strlen($inviteCode);
         if ($code_len < self::$max) {
-            /** 获取补位符号 */
+            /** Get complement */
             $count = count(self::$complement);
             $index = rand(0, $count - 1);
             $inviteCode .= self::$complement[$index];
 
-            /** 随机补位, 生成最终邀请码 */
+            /** Random fill, generate the final invitation code */
             for ($i = 0; $i < self::$max - ($code_len + 1); $i++) {
-                /** 获取随机字符 */
+                /** Get random characters */
                 $dictIndex = rand(0, self::$length - 1);
                 $minxedString = self::$dictionaries[$dictIndex];
                 $inviteCode .= $minxedString;
@@ -124,7 +119,7 @@ class InvitaionCode
     }
 
     /**
-     * 解码一个邀请码
+     * Decode an invitation code
      * @param string $inviteCode
      * @return float|int
      * @version("1.0")
@@ -132,10 +127,10 @@ class InvitaionCode
      */
     public function encode(string $inviteCode)
     {
-        /** 获取映射数组的具体含义 */
+        /** Get the specific meaning of the mapping array */
         $dictionaries = array_flip(self::$dictionaries);
 
-        /** 确定补位字符位置 */
+        /** Determine the position of complement character */
         $mixed = strlen($inviteCode);;
         $i = 0;
         while ($i < count(self::$complement)) {
@@ -147,7 +142,7 @@ class InvitaionCode
             $i++;
         }
 
-        /** 字符映射反推 */
+        /** Character mapping Backstepping */
         $encode = 0;
         for ($i = 0; $i < $mixed; $i++) {
             $index = $dictionaries[$inviteCode[$i]];
