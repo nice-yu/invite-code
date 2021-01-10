@@ -18,7 +18,7 @@
 ```php
 /** 只需要引入即可 */
 $app = new \TimAutumnWind\InvitaionCode();
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### 改变生成邀请码位数
@@ -31,7 +31,7 @@ $app->decode(1);
 5. 但是我们会有补位需求,所以默认是 `30` 个字典字符
 ```php
 $app = new \TimAutumnWind\InvitaionCode(8);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### 修改邀请码字典
@@ -46,7 +46,7 @@ $dictionaries = array(
         'S', 'T', 'U', 'V', 'W', 'X');
 
 $app = new \TimAutumnWind\InvitaionCode(8, $dictionaries);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### 修改邀请码补位符号
@@ -56,7 +56,7 @@ $app->decode(1);
 ```php
 $complement = array('Y', 'Z');
 $app = new \TimAutumnWind\InvitaionCode(8, arrray(), $complement);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### 编码和解码
@@ -64,8 +64,8 @@ $app->decode(1);
 $app = new \TimAutumnWind\InvitaionCode();
 
 /** 编码 */
-$app->decode(1);
+$app->encode(1);
 
 /** 解码 */
-$app->encode($app->decode(1));
+$app->decode($app->encode(1));
 ```

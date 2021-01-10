@@ -76,7 +76,7 @@ class InvitaionCode
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
-    public function decode(int $id)
+    public function encode(int $id)
     {
         $inviteCode = "";
         $length = self::$length;
@@ -125,13 +125,13 @@ class InvitaionCode
      * @version("1.0")
      * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
-    public function encode(string $inviteCode)
+    public function decode(string $inviteCode)
     {
         /** Get the specific meaning of the mapping array */
         $dictionaries = array_flip(self::$dictionaries);
 
         /** Determine the position of complement character */
-        $mixed = strlen($inviteCode);;
+        $mixed = strlen($inviteCode);
         $i = 0;
         while ($i < count(self::$complement)) {
             $item = strpos($inviteCode, self::$complement[$i]);

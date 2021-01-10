@@ -21,7 +21,7 @@
 ```php
 /** Just include it */
 $app = new \TimAutumnWind\InvitaionCode();
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### Generated invitation code, number of digits
@@ -36,7 +36,7 @@ $app->decode(1);
     31 ^ 6 = 887,503,681 `get√`<br/>
 ```php
 $app = new \TimAutumnWind\InvitaionCode(8);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### Modify invitation code dictionary
@@ -51,7 +51,7 @@ $dictionaries = array(
         'S', 'T', 'U', 'V', 'W', 'X');
 
 $app = new \TimAutumnWind\InvitaionCode(8, $dictionaries);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### Modify the supplementary symbol of invitation code
@@ -61,7 +61,7 @@ $app->decode(1);
 ```php
 $complement = array('Y', 'Z');
 $app = new \TimAutumnWind\InvitaionCode(8, arrray(), $complement);
-$app->decode(1);
+$app->encode(1);
 ```
 
 ##### Encoding and decoding
@@ -69,8 +69,8 @@ $app->decode(1);
 $app = new \TimAutumnWind\InvitaionCode();
 
 /** Get code */
-$app->decode(1);
+$app->encode(1);
 
 /** Untie code */
-$app->encode($app->decode(1));
+$app->decode($app->encode(1));
 ```
