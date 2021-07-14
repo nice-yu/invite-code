@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace TimAutumnWind;
+namespace NiceYuv;
 
 class InvitaionCode
 {
