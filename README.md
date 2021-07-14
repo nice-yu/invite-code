@@ -20,7 +20,7 @@
 ##### Generate an invitation code
 ```php
 /** Just include it */
-$app = new \TimAutumnWind\InvitaionCode();
+$app = new \NiceYuv\InvitaionCode();
 $app->encode(1);
 ```
 
@@ -35,7 +35,7 @@ $app->encode(1);
     30 ^ 6 = 729,000,000 `get√`<br/>
     31 ^ 6 = 887,503,681 `get√`<br/>
 ```php
-$app = new \TimAutumnWind\InvitaionCode(8);
+$app = new \NiceYuv\InvitaionCode(8);
 $app->encode(1);
 ```
 
@@ -50,7 +50,7 @@ $dictionaries = array(
         'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X');
 
-$app = new \TimAutumnWind\InvitaionCode(8, $dictionaries);
+$app = new \NiceYuv\InvitaionCode(8, $dictionaries);
 $app->encode(1);
 ```
 
@@ -60,13 +60,13 @@ $app->encode(1);
 3. `Note: ` never be a character that already exists in the dictionary`
 ```php
 $complement = array('Y', 'Z');
-$app = new \TimAutumnWind\InvitaionCode(8, arrray(), $complement);
+$app = new \NiceYuv\InvitaionCode(8, arrray(), $complement);
 $app->encode(1);
 ```
 
 ##### Encoding and decoding
 ```php
-$app = new \TimAutumnWind\InvitaionCode();
+$app = new \NiceYuv\InvitaionCode();
 
 /** Get code */
 $app->encode(1);

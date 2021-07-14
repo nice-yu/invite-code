@@ -1,11 +1,11 @@
 {
-  "name": "tim-autumnwind/invitation-code",
+  "name": "niceyuv/invitation-code",
   "description": "Generate invitation code",
   "type": "1",
   "license": "MIT",
   "authors": [
     {
-      "name": "TimAutumnWind",
+      "name": "NiceYuv",
       "email": "wxstones@gmail.com"
     }
   ],
