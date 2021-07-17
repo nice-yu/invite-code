@@ -11,9 +11,8 @@ class InvitaionCode
      * Not in ( 0 O 1 I)
      * reserve (Y AND Z)
      * @var string[]
-     * @version("1.0")
      */
-    private array $dictionaries = array(
+    private $dictionaries = array(
         '2', '3', '4', '5', '6', '7', '8', '9',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
         'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
@@ -23,26 +22,20 @@ class InvitaionCode
     /**
      * (Y AND Z) The above characters cannot be repeated
      * @var array
-     * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
-    private array $complement = array('Y', 'Z');
+    private $complement = array('Y', 'Z');
     
     /**
      * Dictionary size
      * @var int
-     * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
-    private int $length = 30;
+    private $length = 30;
     
     /**
      * Minimum length of invitation code
      * @var int
-     * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
-    private int $max = 6;
+    private $max = 6;
     
     /**
      * Initialize customizable generation mode
@@ -71,7 +64,6 @@ class InvitaionCode
      * @param int $id Id
      * @return string
      * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
     public function encode(int $id)
     {
@@ -92,7 +84,6 @@ class InvitaionCode
      * @param string $inviteCode
      * @return string
      * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
     private function mixedInvite(string $inviteCode): string
     {
@@ -119,8 +110,6 @@ class InvitaionCode
      * Decode an invitation code
      * @param string $inviteCode
      * @return float|int
-     * @version("1.0")
-     * @author("Tim-AutumnWind <wxstones@gmail.com>")
      */
     public function decode(string $inviteCode)
     {

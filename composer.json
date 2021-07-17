@@ -1,21 +1,19 @@
 {
   "name": "niceyuv/invitation-code",
   "description": "Generate invitation code",
-  "type": "1",
   "license": "MIT",
   "authors": [
     {
       "name": "NiceYuv",
-      "email": "wxstones@gmail.com"
+      "email": "niceyu0108@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": "^7.0"
   },
   "autoload": {
     "psr-4": {
-      "TimAutumnWind\\": "src/"
+      "NiceYuv\\": "src/"
     }
   }
 }
