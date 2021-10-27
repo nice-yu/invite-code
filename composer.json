@@ -1,19 +1,21 @@
 {
-  "name": "niceyuv/invitation-code",
-  "description": "Generate invitation code",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "NiceYuv",
-      "email": "niceyu0108@gmail.com"
+    "name": "niceyuv/invite-code",
+    "description": "Generate a globally unique invite-code code that does not repeat and can be decrypted",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "niceyuv",
+            "email": "niceyu0108@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload":{
+        "psr-4":{
+            "NiceYuv\\":"./src/"
+        }
     }
-  ],
-  "require": {
-    "php": "^7.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "NiceYuv\\": "src/"
-    }
-  }
 }

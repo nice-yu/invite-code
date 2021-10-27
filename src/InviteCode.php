@@ -1,45 +1,43 @@
 <?php
 declare(strict_types=1);
-
 namespace NiceYuv;
 
-class InvitaionCode
+class InviteCode
 {
-
+    
     /**
      * 32 hexadecimal characters
      * Not in ( 0 O 1 I)
      * reserve (Y AND Z)
      * @var string[]
      */
-    private $dictionaries = array(
+    private array $dictionaries = array(
         '2', '3', '4', '5', '6', '7', '8', '9',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
         'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X');
-
-
+    
+    
     /**
      * (Y AND Z) The above characters cannot be repeated
      * @var array
      */
-    private $complement = array('Y', 'Z');
+    private array $complement = array('Y', 'Z');
     
     /**
      * Dictionary size
      * @var int
      */
-    private $length = 30;
+    private int $length = 30;
     
     /**
      * Minimum length of invitation code
      * @var int
      */
-    private $max = 6;
+    private int $max = 6;
     
     /**
      * Initialize customizable generation mode
-     * InvitaionCode constructor.
      * @param int $max
      * @param array $dictionaries
      * @param array $complement
@@ -56,16 +54,15 @@ class InvitaionCode
         if (!empty($complement)) {
             $this->complement = $complement;
         }
-
+        
     }
-
+    
     /**
-     * Code an invitation code
+     * Code an inviteCode
      * @param int $id Id
      * @return string
-     * @version("1.0")
      */
-    public function encode(int $id)
+    public function encode(int $id): string
     {
         $inviteCode = "";
         $length = $this->length;
@@ -78,12 +75,11 @@ class InvitaionCode
         $inviteCode .= $this->dictionaries[$index];
         return $this->mixedInvite($inviteCode);
     }
-
+    
     /**
-     * Mixed invitation code
+     * Mixed inviteCode
      * @param string $inviteCode
      * @return string
-     * @version("1.0")
      */
     private function mixedInvite(string $inviteCode): string
     {
@@ -94,28 +90,28 @@ class InvitaionCode
             $count = count($this->complement);
             $index = rand(0, $count - 1);
             $inviteCode .= $this->complement[$index];
-
+            
             /** Random fill, generate the final invitation code */
             for ($i = 0; $i < $this->max - ($code_len + 1); $i++) {
                 /** Get random characters */
                 $dictIndex = rand(0, $this->length - 1);
-                $minxedString = $this->dictionaries[$dictIndex];
-                $inviteCode .= $minxedString;
+                $gather = $this->dictionaries[$dictIndex];
+                $inviteCode .= $gather;
             }
         }
         return $inviteCode;
     }
-
+    
     /**
-     * Decode an invitation code
+     * Decode an inviteCode
      * @param string $inviteCode
-     * @return float|int
+     * @return int
      */
-    public function decode(string $inviteCode)
+    public function decode(string $inviteCode): int
     {
         /** Get the specific meaning of the mapping array */
         $dictionaries = array_flip($this->dictionaries);
-
+        
         /** Determine the position of complement character */
         $mixed = strlen($inviteCode);
         $i = 0;
@@ -127,8 +123,8 @@ class InvitaionCode
             }
             $i++;
         }
-
-        /** Character mapping Backstepping */
+        
+        /** Character mapping decryption */
         $encode = 0;
         for ($i = 0; $i < $mixed; $i++) {
             $index = $dictionaries[$inviteCode[$i]];
@@ -136,5 +132,53 @@ class InvitaionCode
         }
         return $encode;
     }
-
+    
+    /**
+     * @return string[]
+     */
+    public function getDictionaries(): array
+    {
+        return $this->dictionaries;
+    }
+    
+    /**
+     * @param string[] $dictionaries
+     */
+    public function setDictionaries(array $dictionaries): void
+    {
+        $this->dictionaries = $dictionaries;
+    }
+    
+    /**
+     * @return array
+     */
+    public function getComplement(): array
+    {
+        return $this->complement;
+    }
+    
+    /**
+     * @param array $complement
+     */
+    public function setComplement(array $complement): void
+    {
+        $this->complement = $complement;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getMax(): int
+    {
+        return $this->max;
+    }
+    
+    /**
+     * @param int $max
+     */
+    public function setMax(int $max): void
+    {
+        $this->max = $max;
+    }
+    
 }
