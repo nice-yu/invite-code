@@ -17,7 +17,7 @@
 ##### 生成一个邀请码
 ```php
 /** 只需要引入即可 */
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->encode(1);
 ```
 
@@ -30,10 +30,10 @@ $app->encode(1);
     我们可以得到不同的10亿个邀请码<br/>
 5. 但是我们会有补位需求,所以默认是 `30` 个字典字符
 ```php
-$app = new \NiceYuv\InviteCode(8);
+$app = new \NiceYu\InviteCode(8);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setMax(8);
 ```
 
@@ -48,10 +48,10 @@ $dictionaries = array(
         'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X');
 
-$app = new \NiceYuv\InviteCode(8, $dictionaries);
+$app = new \NiceYu\InviteCode(8, $dictionaries);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setDictionaries($dictionaries);
 ```
 
@@ -61,16 +61,16 @@ $app->setDictionaries($dictionaries);
 3. `注意`: `千万不能是字典里面存在的字符`
 ```php
 $complement = array('Y', 'Z');
-$app = new \NiceYuv\InviteCode(8, arrray(), $complement);
+$app = new \NiceYu\InviteCode(8, arrray(), $complement);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setComplement($complement);
 ```
 
 ##### 编码和解码
 ```php
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 
 /** 编码 */
 $app->encode(1);

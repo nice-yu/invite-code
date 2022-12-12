@@ -1,12 +1,12 @@
 {
-    "name": "niceyuv/invite-code",
+    "name": "nice-yu/invite-code",
     "description": "Generate a globally unique invite-code code that does not repeat and can be decrypted",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "niceyuv",
-            "email": "niceyu0108@gmail.com"
+            "name": "nice-yu",
+            "email": "nice-yu@qq.com"
         }
     ],
     "minimum-stability": "dev",
@@ -15,7 +15,7 @@
     },
     "autoload":{
         "psr-4":{
-            "NiceYuv\\":"./src/"
+            "NiceYu\\":"./src/"
         }
     }
 }

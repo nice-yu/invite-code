@@ -20,7 +20,7 @@
 ##### Generate an invitation code
 ```php
 /** Just include it */
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->encode(1);
 ```
 
@@ -35,10 +35,10 @@ $app->encode(1);
     30 ^ 6 = 729,000,000 `get√`<br/>
     31 ^ 6 = 887,503,681 `get√`<br/>
 ```php
-$app = new \NiceYuv\InviteCode(8);
+$app = new \NiceYu\InviteCode(8);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setMax(8);
 ```
 
@@ -53,10 +53,10 @@ $dictionaries = array(
         'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X');
 
-$app = new \NiceYuv\InviteCode(8, $dictionaries);
+$app = new \NiceYu\InviteCode(8, $dictionaries);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setDictionaries($dictionaries);
 ```
 
@@ -66,16 +66,16 @@ $app->setDictionaries($dictionaries);
 3. `Note: ` never be a character that already exists in the dictionary`
 ```php
 $complement = array('Y', 'Z');
-$app = new \NiceYuv\InviteCode(8, arrray(), $complement);
+$app = new \NiceYu\InviteCode(8, arrray(), $complement);
 $app->encode(1);
 // OR
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 $app->setComplement($complement);
 ```
 
 ##### Encoding and decoding
 ```php
-$app = new \NiceYuv\InviteCode();
+$app = new \NiceYu\InviteCode();
 
 /** Get code */
 $app->encode(1);
