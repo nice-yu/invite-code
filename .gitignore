@@ -2,12 +2,18 @@
 .DS_Store
 
 # IDE
-.idea
+.idea/*
 
 # Composer
-/vendor/
+vendor/*
 composer.lock
+composer.phar
 
 # Test
 index.php
 test.php
+
+# PHPUnit
+.phpunit.cache
+tests/codeCoverage
+

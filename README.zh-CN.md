@@ -17,64 +17,61 @@
 ##### 生成一个邀请码
 ```php
 /** 只需要引入即可 */
-$app = new \NiceYu\InviteCode();
-$app->encode(1);
-```
-
-##### 改变生成邀请码位数
-1. 默认情况下,是六位
-2. 同时去除掉了 `O` `0` `I` `1` 
-3. 去除掉肉眼容易分辨错误的字符后, (26 + 10) - 4 = 32位
-4. 正常来说:<br/>
-    32^6次方 = 10亿次<br/>
-    我们可以得到不同的10亿个邀请码<br/>
-5. 但是我们会有补位需求,所以默认是 `30` 个字典字符
-```php
-$app = new \NiceYu\InviteCode(8);
-$app->encode(1);
-// OR
-$app = new \NiceYu\InviteCode();
-$app->setMax(8);
-```
-
-##### 修改邀请码字典
-1. 默认情况下是以下这个字典
-2. 大家可以把字典打乱, 到时候每个字符代表的意义就会变更
-3. `注意`: `千万不要中途修改字典, 不然需要全量更新`
-```php
-$dictionaries = array(
-        '2', '3', '4', '5', '6', '7', '8', '9',
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-        'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
-        'S', 'T', 'U', 'V', 'W', 'X');
-
-$app = new \NiceYu\InviteCode(8, $dictionaries);
-$app->encode(1);
-// OR
-$app = new \NiceYu\InviteCode();
-$app->setDictionaries($dictionaries);
-```
-
-##### 修改邀请码补位符号
-1. 补位符号是决定低位数字的分割线
-2. 请使用数组传入, 可以是多个
-3. `注意`: `千万不能是字典里面存在的字符`
-```php
-$complement = array('Y', 'Z');
-$app = new \NiceYu\InviteCode(8, arrray(), $complement);
-$app->encode(1);
-// OR
-$app = new \NiceYu\InviteCode();
-$app->setComplement($complement);
+$class = new \NiceYu\InviteCode\InviteCode();
+$class->encode(1);
 ```
 
 ##### 编码和解码
 ```php
-$app = new \NiceYu\InviteCode();
+$class = new \NiceYu\InviteCode\InviteCode();
 
 /** 编码 */
-$app->encode(1);
+$class->encode(1);
 
 /** 解码 */
-$app->decode($app->encode(1));
+$class->decode($app->encode(1));
 ```
+
+##### 改变生成邀请码位数
+1. 默认情况下, 是六位
+2. 同时去除掉了 `O` `0` `I` `1` `Y` `Z`
+3. 去除掉肉眼容易分辨错误的字符后, (26 + 10) - 6 = 30位
+4. 正常来说:<br/>
+    30^6次方 = 10亿次<br/>
+    我们可以得到不同的 7.29亿个邀请码<br/>
+```php
+$class = new \NiceYu\InviteCode\InviteCode();
+$class->encode(729000000);
+```
+
+##### 修改邀请码的配置
+1. 默认情况下是以下配置
+2. 大家可以把字典打乱, 到时候每个字符代表的意义就会变更
+3. `注意`: `千万不要中途修改字典, 不然需要全量更新`
+```php
+$max = 6;
+$complement = array('Y', 'Z');
+$dictionaries = array(
+    '2', '3', '4', '5', '6', '7', '8', '9',
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+    'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
+    'S', 'T', 'U', 'V', 'W', 'X'
+);
+
+$class = new \NiceYu\InviteCode\InviteCode();
+$class->setMax($max)
+      ->setComplement($complement)
+      >setDictionaries($dictionaries);
+$encode = $class->encode(1);
+```
+
+##### 假如需要的是其他位数
+1. 一般来说 6位数 已经足够大型项目使用
+2. 如果你有需要, 可以修改为 7位数 比如用于订单的计算, 也是可以的
+
+| 位数  | 最大值           | 计算方法   |
+|-----|---------------|--------|
+| 5   | 2430,0000     | 30^5次方 |
+| 6   | 7,2900,0000   | 30^6次方 |
+| 7   | 218,7000,0000 | 30^7次方 |
+
