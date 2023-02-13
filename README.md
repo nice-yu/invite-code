@@ -10,18 +10,44 @@
 2. After the mobile phone number verification is correct, store the user login information in the `login table`<br/>
 3. Then use the newly added data table of `LoginForm` to auto-increment `Id` to generate an invitation code<br/>
 
-###### In this way, the invitation code will not be duplicated<br/>
-###### At the same time, the invitation code will not be used as a query `where`<br/>
-###### Because the invitation code can be pushed back to `Id`<br/>
+#### In this way, the invitation code will not be duplicated<br/>
+#### At the same time, the invitation code will not be used as a query `where`<br/>
+#### Because the invitation code can be pushed back to `Id`<br/>
 
-##### Generate an invitation code
+#### Install
+```
+composer require nice-yu/php-enum
+```
+
+#### Unit Test Information
+- Unit tests with 100% coverage
+
+```
+Enum (NiceYu\Tests\Enum\Enum)
+ ✔ The static call to the get method [0.17 ms]
+ ✔ The static call to the get key method [19.20 ms]
+ ✔ The static call to the get value method [0.23 ms]
+ ✔ The static call to the get message method [0.35 ms]
+ ✔ Static call constant key method [0.28 ms]
+ ✔ Static call constant dynamic key method [0.46 ms]
+ ✔ New construct dynamic key method [0.18 ms]
+ ✔ New construct dynamic value method [0.13 ms]
+ ✔ New construct dynamic message method [0.40 ms]
+ ✔ The static call to the get keys method [0.12 ms]
+ ✔ The static call to the get values method [0.10 ms]
+ ✔ The static call to the get messages method [0.10 ms]
+ ✔ Not exist constant exception [1.67 ms]
+ ✔ Not existent search for empty constants [0.10 ms]
+```
+
+#### Generate an invitation code
 ```php
 /** Just import */
 $class = new \NiceYu\InviteCode\InviteCode();
 $class->encode(1);
 ```
 
-##### encryption and decryption
+#### encryption and decryption
 ```php
 $class = new \NiceYu\InviteCode\InviteCode();
 
@@ -32,7 +58,7 @@ $class->encode(1);
 $class->decode($app->encode(1));
 ```
 
-##### Change the digits of generated invitation code
+#### Change the digits of generated invitation code
 1. By default, it is six digits
 2. Also removed `O` `0` `I` `1` `Y` `Z`
 3. After removing the wrong characters that are easy to distinguish with the naked eye, (26 + 10) - 6 = 30 bit
@@ -44,7 +70,7 @@ $class = new \NiceYu\InviteCode\InviteCode();
 $class->encode(729000000);
 ```
 
-##### Modify the configuration of the invitation code
+#### Modify the configuration of the invitation code
 1. default the following configuration
 2. You can mess up the dictionary, then the meaning of each character will change
 3. `Note`: `Do not modify the dictionary midway, or you need to update it in full`
@@ -65,7 +91,7 @@ $class->setMax($max)
 $encode = $class->encode(1);
 ```
 
-##### If other digits are required
+#### If other digits are required
 1. Generally speaking, 6 digits are enough for large projects
 2. If you need, you can modify it to 7 digits, such as for the calculation of orders, it is also possible
 
