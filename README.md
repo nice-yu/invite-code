@@ -16,28 +16,22 @@
 
 #### Install
 ```
-composer require nice-yu/php-enum
+composer require nice-yu/invite-code
 ```
 
 #### Unit Test Information
 - Unit tests with 100% coverage
 
 ```
-Enum (NiceYu\Tests\Enum\Enum)
- ✔ The static call to the get method [0.17 ms]
- ✔ The static call to the get key method [19.20 ms]
- ✔ The static call to the get value method [0.23 ms]
- ✔ The static call to the get message method [0.35 ms]
- ✔ Static call constant key method [0.28 ms]
- ✔ Static call constant dynamic key method [0.46 ms]
- ✔ New construct dynamic key method [0.18 ms]
- ✔ New construct dynamic value method [0.13 ms]
- ✔ New construct dynamic message method [0.40 ms]
- ✔ The static call to the get keys method [0.12 ms]
- ✔ The static call to the get values method [0.10 ms]
- ✔ The static call to the get messages method [0.10 ms]
- ✔ Not exist constant exception [1.67 ms]
- ✔ Not existent search for empty constants [0.10 ms]
+Invite Code (NiceYu\Tests\InviteCode\InviteCode)
+✔ Multiple separator letters [0.14 ms]
+✔ Invite code max encode [36.23 ms]
+✔ Invite code encode [0.17 ms]
+✔ Invite code decode [0.13 ms]
+✔ Invite code error capture [4.90 ms]
+✔ Invitation code settings [1.67 ms]
+
+Time: 00:00.061, Memory: 6.00 MB
 ```
 
 #### Generate an invitation code
